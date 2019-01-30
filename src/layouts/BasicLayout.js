@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Layout, Menu, Breadcrumb, Icon } from "antd";
 import SiderBar from "../components/SiderBar/SiderBar.js";
-import { HashRouter } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import Bread from "../components/Bread/Bread.js";
 
-import { routers } from "../router/Router.js";
+import routers from "../router/Router.js";
 
 const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -19,7 +19,6 @@ class BasicLayout extends React.Component {
   };
 
   onCollapse = collapsed => {
-    console.log(collapsed);
     this.setState({ collapsed });
   };
 
@@ -31,13 +30,13 @@ class BasicLayout extends React.Component {
             collapsible
             collapsed={this.state.collapsed}
             onCollapse={this.onCollapse}
+            theme="dark"
           >
             <div
               style={{
                 height: "32px",
                 background: "rgba(255, 255, 255, 0.2)",
                 margin: "16px",
-                color: "#fff",
                 textAlign: "center",
                 lineHeight: "32px"
               }}
@@ -48,8 +47,27 @@ class BasicLayout extends React.Component {
           </Sider>
           <Layout>
             <Header style={{ background: "#fff", padding: 0 }} />
-            <Content style={{ margin: "0 16px" }}>
+            <div style={{ padding:16,paddingBottom:0 }}>
               <Bread />
+            </div>
+            <Content
+              style={{
+                margin: "16px",
+                background: "#fff"
+              }}
+            >
+              <Switch>
+                {routers.map(({ component, path, exact }, index) => {
+                  return (
+                    <Route
+                      exact={true}
+                      path={path}
+                      component={component}
+                      key={path}
+                    />
+                  );
+                })}
+              </Switch>
             </Content>
             <PageFooter
               style={{ textAlign: "center" }}

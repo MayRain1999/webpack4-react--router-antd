@@ -1,5 +1,6 @@
 // 加载页面
 import Loadable from "react-loadable";
+import React, { Component } from "react";
 import { Spin } from "antd";
 export const Loading = props => {
   if (props.error) {
@@ -12,7 +13,6 @@ export const Loading = props => {
     return null;
   }
 };
-
 export const importPath = ({ loader }) => {
   return Loadable({
     loader,
