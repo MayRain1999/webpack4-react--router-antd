@@ -13,7 +13,7 @@ module.exports = {
   },
   output: {
     path: DIST_PATH, //出口路径
-    filename: "[name].[hash].js",
+    filename: "index.js",
     chunkFilename: "[name].[hash].js", //按需加载名称
     // publicPath: "/"
   },

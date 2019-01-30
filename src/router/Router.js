@@ -6,7 +6,7 @@ const routers = [
   {
     path: "/",
     component: importPath({
-      loader: () => import(import("../pages/Home/Home.js"))
+      loader: () => import("../pages/Home/Home.js")
     }),
     name: "首页",
     icon: "home"
@@ -15,7 +15,7 @@ const routers = [
     path: "/counter",
     component: importPath({
       loader: () =>
-        import(import(/* webpackChunkName:"home" */ "../pages/Counter/Counter.js"))
+        import("../pages/Counter/Counter.js")
     }),
     name: "测试页面1",
     icon: "minus-circle"
