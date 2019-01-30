@@ -31,6 +31,7 @@ class SiderBar extends React.Component {
         // onClick={this.handleClick}
         // defaultSelectedKeys={["1"]}
         // defaultOpenKeys={["sub1"]}
+        theme="dark"
         mode="inline"
       >
         {router.map((value, index) => {
@@ -40,6 +41,7 @@ class SiderBar extends React.Component {
                 key={value.key}
                 title={
                   <span>
+                    <Icon type={value.icon} />
                     <span>{value.name}</span>
                   </span>
                 }
@@ -56,7 +58,9 @@ class SiderBar extends React.Component {
           } else {
             return (
               <Menu.Item key={value.path}>
-                <Link to={value.path}>{value.name}</Link>
+                <Icon type={value.icon} />
+                <span>{value.name}</span>
+                <Link to={value.path} />
               </Menu.Item>
             );
           }

@@ -2,7 +2,7 @@ import React from "react";
 import { Breadcrumb, Icon } from "antd";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { routers } from "../../router/Router.js";
+import routers from "../../router/Router.js";
 // 具体导航的名称
 class Bread extends React.Component {
   // 利用PropTypes记住所跳转每个页面的位置
@@ -55,8 +55,8 @@ class Bread extends React.Component {
     const breadcrumbItems = [
       <Breadcrumb.Item key="home">
         <Link to="/">
-          <Icon type="home" />
-          <span>Home</span>
+          <Icon type="home"  />
+          <span style={{paddingLeft:6}}>Home</span>
         </Link>
       </Breadcrumb.Item>
     ].concat(this.state.extraBreadcrumbItems);

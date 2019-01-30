@@ -49,6 +49,7 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: ["file-loader"]
       },
+      //更改antd主题设置
       {
         test: /\.less$/,
         use: [
@@ -62,9 +63,6 @@ module.exports = {
             loader: "less-loader", // compiles Less to CSS
             options: {
               modifyVars: {
-                "@primary-color": "#1890ff",
-                "@link-color": "#1DA57A",
-                "@border-radius-base": "2px",
                 "@font-size-base": "12px"
               },
               javascriptEnabled: true

@@ -21,6 +21,7 @@
         "libraryName": "antd",
         "libraryDirectory": "es",
         "style": true
+        // "style": "css" //主题设置
       }
     ]
   ]
