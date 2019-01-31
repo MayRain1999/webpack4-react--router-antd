@@ -7,6 +7,50 @@ github地址
 > https://github.com/xiaopingzhang0207/webpack4-react-redux-router-antd
 
 会不定时更新,如果觉得有帮助到你，给个Star当做鼓励可好。
+```
+.
+├── README.md
+├── build
+│   ├── webpack.dev.conf.js
+│   ├── webpack.dll.conf.js
+│   └── webpack.prod.conf.js
+├── dist
+├── dll
+├── manifest.json
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   └── index.html
+├── src
+│   ├── components
+│   │   ├── Bread
+│   │   │   └── Bread.js
+│   │   └── SiderBar
+│   │       └── SiderBar.js
+│   ├── index.js
+│   ├── layouts
+│   │   └── BasicLayout.js
+│   ├── pages
+│   │   ├── Counter
+│   │   │   └── Counter.js
+│   │   └── Home
+│   │       └── Home.js
+│   ├── redux
+│   │   ├── actions
+│   │   │   └── counter.js
+│   │   ├── reducer.js
+│   │   ├── reducers
+│   │   │   └── counter.js
+│   │   └── store.js
+│   ├── request
+│   │   └── request.js
+│   ├── router
+│   │   └── Router.js
+│   └── util
+│       └── loadable.js
+└── yarn.lock
+```
 
 1. 新创建一个目录并初始化npm，在本地安装`webpack`，再安装`webpack-cli`
 
@@ -672,7 +716,7 @@ export default request;
 
 ### html-webpack-plugin
 
-```
+```js
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 new HtmlWebpackPlugin({
@@ -726,7 +770,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 ```
 ### mini-css-extract-plugin
 
-```
+```js
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
  new MiniCssExtractPlugin({
@@ -867,7 +911,7 @@ module.exports = {
 ```
 ### webpack.dll.conf.js
 
-```
+```js
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -907,7 +951,8 @@ module.exports = {
 ```
 ### webpack.prod.conf.js
 
-```
+```js
+
 const path = require('path');
 const webpack = require('webpack');
 
@@ -1030,7 +1075,7 @@ module.exports = {
 
 ## 学习过程中的踩坑
 ### 生产环境打包报错
-```
+```js
 ERROR in Path must be a string. Received undefined
 Child html-webpack-plugin for "index.html":
      1 asset
@@ -1042,3 +1087,19 @@ Child html-webpack-plugin for "index.html":
 >https://github.com/jantimon/html-webpack-plugin/issues/895
 
 写完才发现有些忘记记录了，会保持更新。
+
+
+
+
+
+学习的过程中也学习参考了其他优秀的博客和github,以及文档。
+
+>https://github.com/brickspert/blog/issues/1
+
+>https://github.com/NewPrototype/webpack4-es6-react
+
+>https://github.com/axios/axios
+
+>https://github.com/jamiebuilds/react-loadable
+
+>https://www.webpackjs.com/concepts/
