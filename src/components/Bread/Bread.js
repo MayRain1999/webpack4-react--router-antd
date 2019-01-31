@@ -26,19 +26,36 @@ class Bread extends React.Component {
     // 将切分的路径读出来，形成面包屑，存放到this.state.extraBreadcrumbItems
     this.state.extraBreadcrumbItems = this.state.pathSnippets.map(
       (_, index) => {
-        const url = `/${this.state.pathSnippets.slice(0, index + 1).join("/")}`;
+        let url = `/${this.state.pathSnippets.slice(0, index + 1).join("/")}`;
         let temp = "";
         for (let item of routers) {
-          if (url == item.path) {
-            temp = item;
+          if (item.childRouter && item.childRouter.length > 0) {
+            for (let child of item.childRouter) {
+              if (`${item}${child.path}` == child.path) {
+                temp = child;
+                return (
+                  <span>
+                    <Breadcrumb.Item>{item.name}</Breadcrumb.Item>
+                    <Breadcrumb.Item>
+                      {/* <Icon type="temp.icon" /> */}
+                      <span>{temp.name}</span>
+                    </Breadcrumb.Item>
+                  </span>
+                );
+              }
+            }
+          } else {
+            if (url == item.path) {
+              temp = item;
+              return (
+                <Breadcrumb.Item key={url}>
+                  <Icon type={temp.icon} />
+                  <span>{temp.name}</span>
+                </Breadcrumb.Item>
+              );
+            }
           }
         }
-        return (
-          <Breadcrumb.Item key={url}>
-            <Icon type="temp.icon" />
-            <span>{temp.name}</span>
-          </Breadcrumb.Item>
-        );
       }
     );
   }
@@ -55,8 +72,8 @@ class Bread extends React.Component {
     const breadcrumbItems = [
       <Breadcrumb.Item key="home">
         <Link to="/">
-          <Icon type="home"  />
-          <span style={{paddingLeft:6}}>Home</span>
+          <Icon type="home" />
+          <span style={{ paddingLeft: 6 }}>Home</span>
         </Link>
       </Breadcrumb.Item>
     ].concat(this.state.extraBreadcrumbItems);

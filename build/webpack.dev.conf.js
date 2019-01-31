@@ -63,7 +63,8 @@ module.exports = {
             loader: "less-loader", // compiles Less to CSS
             options: {
               modifyVars: {
-                "@font-size-base": "12px"
+                "font-size-base": "12px",
+                'primary-color': '#0EA679' 
               },
               javascriptEnabled: true
             }
