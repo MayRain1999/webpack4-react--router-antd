@@ -1,10 +1,10 @@
-import React from "react";
-import { hashHistory } from "react-router";
-import PropTypes from "prop-types";
+import React from 'react';
+import { hashHistory } from 'react-router';
+import PropTypes from 'prop-types';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import { Menu, Icon } from "antd";
+import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
@@ -29,8 +29,8 @@ class SiderBar extends React.Component {
     return (
       <Menu
         // onClick={this.handleClick}
-        defaultSelectedKeys={["1"]}
-        defaultOpenKeys={["sub1"]}
+        // defaultSelectedKeys={['1']}
+        // defaultOpenKeys={['sub1']}
         theme="dark"
         mode="inline"
       >
@@ -38,7 +38,7 @@ class SiderBar extends React.Component {
           if (value.childRouter && value.childRouter.length > 0) {
             return (
               <SubMenu
-                key={value.path}
+                key={value.name}
                 title={
                   <span>
                     <Icon type={value.icon} />
@@ -49,7 +49,7 @@ class SiderBar extends React.Component {
                 {value.childRouter.map((item, i) => {
                   return (
                     <Menu.Item key={item.path}>
-                      <Link to={`${value.path}${item.path}`}>{item.name}</Link>
+                      <Link to={item.path}>{item.name}</Link>
                     </Menu.Item>
                   );
                 })}

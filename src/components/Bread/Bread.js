@@ -1,8 +1,8 @@
-import React from "react";
-import { Breadcrumb, Icon } from "antd";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import routers from "../../router/Router.js";
+import React from 'react';
+import { Breadcrumb, Icon } from 'antd';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import routers from '../../router/Router.js';
 // 具体导航的名称
 class Bread extends React.Component {
   // 利用PropTypes记住所跳转每个页面的位置
@@ -21,26 +21,25 @@ class Bread extends React.Component {
   getPath() {
     // 对路径进行切分，存放到this.state.pathSnippets中
     this.state.pathSnippets = this.context.router.history.location.pathname
-      .split("/")
+      .split('/')
       .filter(i => i);
     // 将切分的路径读出来，形成面包屑，存放到this.state.extraBreadcrumbItems
     this.state.extraBreadcrumbItems = this.state.pathSnippets.map(
       (_, index) => {
-        let url = `/${this.state.pathSnippets.slice(0, index + 1).join("/")}`;
-        let temp = "";
+        let url = `/${this.state.pathSnippets.slice(0, index + 1).join('/')}`;
+        let temp = '';
         for (let item of routers) {
           if (item.childRouter && item.childRouter.length > 0) {
             for (let child of item.childRouter) {
-              if (`${item}${child.path}` == child.path) {
+              if (child.path == url) {
                 temp = child;
                 return (
-                  <span>
-                    <Breadcrumb.Item>{item.name}</Breadcrumb.Item>
-                    <Breadcrumb.Item>
-                      {/* <Icon type="temp.icon" /> */}
-                      <span>{temp.name}</span>
-                    </Breadcrumb.Item>
-                  </span>
+                  <Breadcrumb.Item key={temp.path}>
+                    <Icon type={temp.icon} />
+                    <span style={{ paddingLeft: 6, fontWeight: 700 }}>
+                      {temp.name}
+                    </span>
+                  </Breadcrumb.Item>
                 );
               }
             }
@@ -48,9 +47,11 @@ class Bread extends React.Component {
             if (url == item.path) {
               temp = item;
               return (
-                <Breadcrumb.Item key={url}>
+                <Breadcrumb.Item key={temp.path}>
                   <Icon type={temp.icon} />
-                  <span>{temp.name}</span>
+                  <span style={{ paddingLeft: 6, fontWeight: 700 }}>
+                    {temp.name}
+                  </span>
                 </Breadcrumb.Item>
               );
             }
