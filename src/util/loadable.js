@@ -1,14 +1,14 @@
 // 加载页面
-import Loadable from "react-loadable";
-import React, { Component } from "react";
-import { Spin, Icon } from "antd";
+import Loadable from 'react-loadable';
+import React, { Component } from 'react';
+import { Spin, Icon } from 'antd';
 
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 const antLong = (
-  <Icon type="loading" style={{ fontSize: 24, color: "red" }} spin />
+  <Icon type="loading" style={{ fontSize: 24, color: 'red' }} spin />
 );
 const antError = (
-  <Icon type="loading" style={{ fontSize: 24, color: "red" }} spin />
+  <Icon type="loading" style={{ fontSize: 24, color: 'red' }} spin />
 );
 
 export const Loading = props => {
@@ -16,27 +16,27 @@ export const Loading = props => {
     return (
       <Spin
         size="large"
-        tip="加载错误......"
+        tip="加载错误 。。。"
         indicator={antError}
-        style={{ position: "absolute", color: "red",top:"40%",left:"50%" }}
+        style={{ position: 'absolute', color: 'red', top: '40%', left: '50%' }}
       />
     );
   } else if (props.timedOut) {
     return (
       <Spin
         size="large"
-        tip="加载超时......"
+        tip="加载超时 。。。"
         indicator={antLong}
-        style={{ textAlign: "center", color: "red" }}
+        style={{ position: 'absolute', color: 'red', top: '40%', left: '50%' }}
       />
     );
   } else if (props.pastDelay) {
     return (
       <Spin
         size="large"
-        tip="Loading......"
+        tip="Loading 。。。"
         indicator={antError}
-        style={{ color: "red" }}
+        style={{ position: 'absolute', color: 'red', top: '40%', left: '50%' }}
       />
     );
   } else {
