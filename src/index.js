@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { LocaleProvider } from "antd";
 import BasicLayout from "./layouts/BasicLayout.js";
 import zhCN from "antd/lib/locale-provider/zh_CN";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 // 生成div node
 const Div = document.createElement("div");
 Div.setAttribute("id", "root");
@@ -16,7 +18,9 @@ class App extends React.Component {
 
 ReactDOM.render(
   <LocaleProvider locale={zhCN}>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </LocaleProvider>,
   document.getElementById("root")
 );

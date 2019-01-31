@@ -29,8 +29,8 @@ class SiderBar extends React.Component {
     return (
       <Menu
         // onClick={this.handleClick}
-        // defaultSelectedKeys={["1"]}
-        // defaultOpenKeys={["sub1"]}
+        defaultSelectedKeys={["1"]}
+        defaultOpenKeys={["sub1"]}
         theme="dark"
         mode="inline"
       >
@@ -38,7 +38,7 @@ class SiderBar extends React.Component {
           if (value.childRouter && value.childRouter.length > 0) {
             return (
               <SubMenu
-                key={value.key}
+                key={value.path}
                 title={
                   <span>
                     <Icon type={value.icon} />

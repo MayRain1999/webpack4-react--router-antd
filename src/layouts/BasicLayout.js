@@ -31,6 +31,7 @@ class BasicLayout extends React.Component {
             collapsed={this.state.collapsed}
             onCollapse={this.onCollapse}
             theme="dark"
+            style={{color:"#0EA679"}}
           >
             <div
               style={{
@@ -41,7 +42,7 @@ class BasicLayout extends React.Component {
                 lineHeight: "32px"
               }}
             >
-              <span>Pareto</span>
+              <span>运营平台</span>
             </div>
             <SiderBar router={routers} />
           </Sider>
