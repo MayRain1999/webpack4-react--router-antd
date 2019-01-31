@@ -19,7 +19,7 @@ module.exports = {
     path: DIST_PATH, //出口路径
     filename: 'index.js',
     chunkFilename: '[name]_[hash].js', //按需加载名称
-    publicPath: './'
+    // publicPath: './'
   },
   // 源错误检查
   devtool: 'source-map',
@@ -88,7 +88,7 @@ module.exports = {
       template: 'public/index.html',
       path: '../public/index.html',
       inject: 'body',
-      title: 'Pareto运营平台 ',
+      title: '管理平台',
       favicon: 'public/favicon.ico',
       filename: 'index.html',
       hash: true,
@@ -99,12 +99,6 @@ module.exports = {
         removeAttributeQuotes: true
       }
     }),
-    new CopyWebpackPlugin([
-      {
-        // from: 'public/index.css',
-        // to: '../dist'
-      }
-    ]),
     new CleanWebpackPlugin(['../dist'], { allowExternal: true }),
     new BundleAnalyzerPlugin(),
     new MiniCssExtractPlugin({
@@ -116,7 +110,7 @@ module.exports = {
       manifest: require('../dll/manifest.json')
     }),
     new CopyWebpackPlugin([
-      { from: 'dll/Dll.js', to: path.resolve(__dirname, '../dist') }
+      { from: 'dll/Dll.js', to: DIST_PATH }
     ])
   ]
   // 热更新

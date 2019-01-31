@@ -15,8 +15,8 @@ module.exports = {
   output: {
     path: DIST_PATH, //出口路径
     filename: 'index.js',
-    chunkFilename: '[chunkhash].js', //按需加载名称
-    // publicPath: "/"
+    chunkFilename: 'js/[name].[chunkhash].js', //按需加载名称
+    // publicPath: "./"
   },
   // 源错误检查
   devtool: 'inline-source-map',
@@ -84,7 +84,7 @@ module.exports = {
       path: '../public/index.html',
       inject: 'body',
       favicon: 'public/favicon.ico',
-      title: 'Pareto',
+      title: '管理平台',
       overlay: true,
       minify: {
         html5: false

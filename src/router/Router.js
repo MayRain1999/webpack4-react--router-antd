@@ -6,7 +6,8 @@ const routers = [
   {
     path: '/',
     component: importPath({
-      loader: () => import('../pages/Home/Home.js')
+      loader: () =>
+        import(/* webpackChunkName: 'Home' */ '../pages/Home/Home.js')
     }),
     name: '首页',
     icon: 'home'
@@ -16,11 +17,21 @@ const routers = [
     icon: 'minus-circle',
     childRouter: [
       {
-        path: '/wwwww',
+        path: '/counter',
         component: importPath({
-          loader: () => import('../pages/Counter/Counter.js')
+          loader: () =>
+            import(/* webpackChunkName: 'Counter' */ '../pages/Counter/Counter.js')
         }),
-        name: 'wwwwww',
+        name: 'Redux测试',
+        icon: 'minus-circle'
+      },
+      {
+        path: '/测试2',
+        component: importPath({
+          loader: () =>
+            import(/* webpackChunkName: 'Counter' */ '../pages/Counter/Counter.js')
+        }),
+        name: 'Redux测试',
         icon: 'minus-circle'
       }
     ]

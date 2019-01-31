@@ -30,6 +30,6 @@ module.exports = {
       name: '[name]_[hash]',
       context: __dirname
     }),
-    new CleanWebpackPlugin(['../dll'], { allowExternal: true }),
+    new CleanWebpackPlugin(['../dll'], { allowExternal: true })
   ]
 };

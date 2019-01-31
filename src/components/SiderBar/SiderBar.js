@@ -49,7 +49,8 @@ class SiderBar extends React.Component {
                 {value.childRouter.map((item, i) => {
                   return (
                     <Menu.Item key={item.path}>
-                      <Link to={item.path}>{item.name}</Link>
+                      <span>{item.name}</span>
+                      <Link to={item.path} />
                     </Menu.Item>
                   );
                 })}

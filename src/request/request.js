@@ -19,15 +19,15 @@ axios.interceptors.request.use(
 // Add a response interceptor
 axios.interceptors.response.use(
   response => {
-    NProgress.done();
-    if (response.data.RetCode === 101) {
-      message.error(response.data.Message);
-      return response;
-    }
-    if (response.data.RetCode === 100) {
-      message.error(response.data.Message);
-      return response;
-    }
+    // NProgress.done();
+    // if (response.data.RetCode === 101) {
+    //   message.error(response.data.Message);
+    //   return response;
+    // }
+    // if (response.data.RetCode === 100) {
+    //   message.error(response.data.Message);
+    //   return response;
+    // }
     return response;
   },
   error => {

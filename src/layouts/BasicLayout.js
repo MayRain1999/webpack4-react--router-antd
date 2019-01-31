@@ -21,7 +21,6 @@ class BasicLayout extends React.Component {
   onCollapse = collapsed => {
     this.setState({ collapsed });
   };
-
   render() {
     return (
       <HashRouter>
@@ -58,31 +57,30 @@ class BasicLayout extends React.Component {
               }}
             >
               <Switch>
-                {routers.map(
-                  ({ component, path, exact, childRouter }, index) => {
-                    if (childRouter && childRouter.length > 0) {
-                      childRouter.map(({ component, path, exact }, index) => {
-                        return (
-                          <Route
-                            exact={true}
-                            path={path}
-                            component={component}
-                            key={path}
-                          />
-                        );
-                      });
-                    } else {
+                {routers.map(item => {
+                  if (item.childRouter && item.childRouter.length > 0) {
+                    let childRouter = item.childRouter;
+                    return childRouter.map(itemChild => {
                       return (
                         <Route
                           exact={true}
-                          path={path}
-                          component={component}
-                          key={path}
+                          path={itemChild.path}
+                          component={itemChild.component}
+                          key={itemChild.path}
                         />
                       );
-                    }
+                    });
+                  } else {
+                    return (
+                      <Route
+                        exact={true}
+                        path={item.path}
+                        component={item.component}
+                        key={item.path}
+                      />
+                    );
                   }
-                )}
+                })}
               </Switch>
             </Content>
             <PageFooter
