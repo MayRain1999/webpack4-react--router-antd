@@ -1,5 +1,26 @@
 [toc]
 # webpack4学习记录
+## npm 命令
+初始化打包公共npm包，加快打包速度
+```js
+npm run dll 
+或者 
+yarn dll
+```
+开发环境
+```
+npm run dev
+或者
+yarn dev
+```
+
+生产环境打包
+```
+npm run build 
+
+yarn build
+```
+
 ## 安装和初始化
 首先附上官方的[文档](https://www.webpackjs.com/guides/)
 
