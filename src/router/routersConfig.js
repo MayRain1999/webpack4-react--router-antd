@@ -1,17 +1,20 @@
-import { SolutionOutlined, AndroidOutlined } from "@ant-design/icons";
-import Home from "pages/Home/Home";
-import PageOne from "pages/Pageone/PageOne";
-import React from "react";
+import React from 'react';
+import Home from 'pages/Home/Home';
+import Pageone from 'pages/Pageone/Pageone';
+import { SolutionOutlined, AndroidOutlined } from '@ant-design/icons';
+
 const routersConfig = [
   {
-    path: "/",
-    name: "首页",
+    path: '/',
+    name: '首页',
     icon: <AndroidOutlined />,
+    component: () => <Home />,
   },
   {
-    path: "/pageone",
-    name: "首页",
+    path: '/pageone',
+    name: 'pageone',
     icon: <SolutionOutlined />,
+    component: () => <Pageone />,
   },
 ];
 

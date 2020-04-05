@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import style from "./Counter.css";
-import { Button } from "antd";
+import React, { Component } from 'react';
+import style from './Counter.css';
+import { Button } from 'antd';
 
 class Counter extends Component {
   constructor(props) {

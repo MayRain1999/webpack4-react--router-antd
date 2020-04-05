@@ -1,12 +1,18 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Link, NavLink } from "react-router-dom";
-import { Layout, Breadcrumb, Menu } from "antd";
-import "./index.css";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import {
+  BrowserRouter,
+  Route,
+  NavLink,
+  withRouter as WithRouter,
+} from 'react-router-dom';
+
+import { Layout, Breadcrumb, Menu } from 'antd';
+
+import './index.css';
+import routersConfig from './router/routersConfig';
+
 const { Header, Footer, Sider, Content } = Layout;
-const { SubMenu } = Menu;
-import Home from "pages/Home/Home";
-import Pageone from "pages/Pageone/Pageone";
 
 class App extends Component {
   constructor(props) {
@@ -15,46 +21,81 @@ class App extends Component {
       collapsed: false,
     };
   }
-  onCollapse = (collapsed) => {
-    console.log(collapsed);
-    this.setState({ collapsed });
-  };
+
   componentDidMount() {
-    console.log(this.props);
+    // console.log(routersConfig);
   }
+
+  onCollapse = (collapsed) => {
+    this.setState({
+      collapsed,
+    });
+  };
+
   render() {
     const { collapsed } = this.state;
-    // const pathName = BrowserRouter.getCurrentLocation().pathname;
     return (
       <BrowserRouter>
-        <Layout style={{ minHeight: "100vh" }}>
+        <Layout
+          style={{
+            minHeight: '100vh',
+          }}
+        >
           <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
-            <div style={{ height: 64 }}></div>
-            <Menu theme="dark">
-              <Menu.Item>
-                <NavLink to="/">首页</NavLink>
-              </Menu.Item>
-              <Menu.Item>
-                <NavLink to="/pageone">页面一</NavLink>
-              </Menu.Item>
-            </Menu>
+            <div
+              style={{
+                height: 64,
+              }}
+            />
+            <WithRouter>
+              <Menu theme="dark">
+                {routersConfig.map((item) => (
+                  <Menu.Item key={item.path}>
+                    <NavLink to={item.path}>
+                      {item.icon}
+                      {item.name}
+                    </NavLink>
+                  </Menu.Item>
+                ))}
+              </Menu>
+            </WithRouter>
           </Sider>
           <Layout className="site-layout">
             <Header className="site-layout-background" />
-            <Content style={{ margin: "0 16px" }}>
-              <Breadcrumb style={{ margin: "16px 0" }}>
+            <Content
+              style={{
+                margin: '0 16px',
+              }}
+            >
+              <Breadcrumb
+                style={{
+                  margin: '16px 0',
+                }}
+              >
                 <Breadcrumb.Item>User</Breadcrumb.Item>
                 <Breadcrumb.Item>Bill</Breadcrumb.Item>
               </Breadcrumb>
               <div
                 className="site-layout-background"
-                style={{ padding: 24, minHeight: 360 }}
+                style={{
+                  padding: 24,
+                  minHeight: 360,
+                }}
               >
-                <Route path="/" component={Home} />
-                <Route path="/pageone" component={Pageone} />
+                {routersConfig.map((item) => (
+                  <Route
+                    key={item.path}
+                    path={item.path}
+                    component={item.component}
+                  />
+                ))}
               </div>
             </Content>
-            <Footer style={{ textAlign: "center" }}>
+            <Footer
+              style={{
+                textAlign: 'center',
+              }}
+            >
               Ant Design ©2018 Created by Ant UED
             </Footer>
           </Layout>
@@ -64,9 +105,9 @@ class App extends Component {
   }
 }
 
-const divNode = document.createElement("div");
-divNode.id = "app";
+const divNode = document.createElement('div');
+divNode.id = 'app';
 
 document.body.appendChild(divNode);
 
-ReactDOM.render(<App></App>, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));

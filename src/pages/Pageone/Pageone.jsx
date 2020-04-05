@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 class Pageone extends React.Component {
   constructor(props) {
@@ -6,7 +6,11 @@ class Pageone extends React.Component {
     this.state = {};
   }
   render() {
-    return <div>PageOne</div>;
+    return (
+      <div>
+        <span />
+      </div>
+    );
   }
 }
 
