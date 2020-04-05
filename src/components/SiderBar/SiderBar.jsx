@@ -4,7 +4,7 @@ import { withRouter, NavLink } from 'react-router-dom';
 import routersConfig from '../../router/routersConfig';
 
 const { Sider } = Layout;
-// const { SubMenu } = Menu;
+const { SubMenu } = Menu;
 
 class SiderBar extends Component {
   constructor(props) {
