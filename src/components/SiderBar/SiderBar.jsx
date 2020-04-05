@@ -15,16 +15,34 @@ class SiderBar extends Component {
     };
   }
 
-  renderSiderbar = () => {
-    routersConfig.map((item) => (
-      <Menu.Item key={item.path}>
-        <NavLink to={item.path}>
-          {item.icon}
-          {item.name}
-        </NavLink>
-      </Menu.Item>
-    ));
-  };
+  componentDidMount() {}
+
+  renderSiderbar = (config) =>
+    config.map((item) => {
+      if (item.childRouters && item.childRouters.length) {
+        return (
+          <SubMenu
+            key={item.name}
+            title={
+              <span>
+                {item.icon}
+                {item.name}
+              </span>
+            }
+          >
+            {this.renderSiderbar(item.childRouters)}
+          </SubMenu>
+        );
+      }
+      return (
+        <Menu.Item key={item.path}>
+          <NavLink to={item.path}>
+            {item.icon}
+            {item.name}
+          </NavLink>
+        </Menu.Item>
+      );
+    });
 
   changnTheme = () => {
     const { theme } = this.state;
@@ -41,19 +59,25 @@ class SiderBar extends Component {
 
   render() {
     const { theme, collapsed } = this.state;
+    const { location } = this.props;
     return (
       <Sider
         theme={theme}
         collapsible
         collapsed={collapsed}
         onCollapse={this.onCollapse}
+        style={{
+          minHeight: '100vh',
+        }}
       >
         <Switch
-          checkedChildren="深色"
-          unCheckedChildren="浅色"
+          checkedChildren="浅色"
+          unCheckedChildren="深色"
           onChange={this.changnTheme}
         />
-        <Menu>{this.renderSiderbar()}</Menu>
+        <Menu theme={theme} mode="inline" selectedKeys={[location.pathname]}>
+          {this.renderSiderbar(routersConfig)}
+        </Menu>
       </Sider>
     );
   }

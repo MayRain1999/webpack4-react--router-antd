@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import SiderBar from 'components/SiderBar/SiderBar';
+import ContentBox from 'components/ContentBox/ContentBox';
 import { Layout, Breadcrumb } from 'antd';
 
 import './index.css';
-import routersConfig from './router/routersConfig';
 
 const { Header, Footer, Content } = Layout;
 
@@ -23,11 +23,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Layout
-          style={{
-            minHeight: '100vh',
-          }}
-        >
+        <Layout>
           <SiderBar />
 
           <Layout className="site-layout">
@@ -45,21 +41,7 @@ class App extends Component {
                 <Breadcrumb.Item>User</Breadcrumb.Item>
                 <Breadcrumb.Item>Bill</Breadcrumb.Item>
               </Breadcrumb>
-              <div
-                className="site-layout-background"
-                style={{
-                  padding: 24,
-                  minHeight: 360,
-                }}
-              >
-                {routersConfig.map((item) => (
-                  <Route
-                    key={item.path}
-                    path={item.path}
-                    component={item.component}
-                  />
-                ))}
-              </div>
+              <ContentBox />
             </Content>
             <Footer
               style={{

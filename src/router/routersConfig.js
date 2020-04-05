@@ -20,7 +20,7 @@ const routersConfig = [
   },
   {
     path: '/pagetwo',
-    name: 'pagetwo',
+    name: 'pages',
     icon: <SolutionOutlined />,
     showSiderbar: true,
     childRouters: [

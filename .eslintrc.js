@@ -13,8 +13,9 @@ module.exports = {
   },
   parser: 'babel-eslint',
   extends: [
-    'plugin:react/recommended',
     'plugin:prettier/recommended',
+    'plugin:react/recommended',
+    'prettier/react',
     'airbnb',
   ],
   globals: {
@@ -32,5 +33,9 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'object-curly-newline': 'off',
+    'arrow-body-style': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'react/jsx-wrap-multilines': 'off',
+    'react/prop-types': 'off',
   },
 };
