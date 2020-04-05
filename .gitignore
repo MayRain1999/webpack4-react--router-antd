@@ -2,3 +2,5 @@ yarn-error.log
 node_modules
 node_modules/
 .vscode
+dist
+yarn.lock
