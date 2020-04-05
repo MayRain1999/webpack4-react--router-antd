@@ -1,39 +1,26 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {
-  BrowserRouter,
-  Route,
-  NavLink,
-  withRouter as WithRouter,
-} from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import { Layout, Breadcrumb, Menu } from 'antd';
+import SiderBar from 'components/SiderBar/SiderBar';
+import { Layout, Breadcrumb } from 'antd';
 
 import './index.css';
 import routersConfig from './router/routersConfig';
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer, Content } = Layout;
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      collapsed: false,
-    };
+    this.state = {};
   }
 
   componentDidMount() {
     // console.log(routersConfig);
   }
 
-  onCollapse = (collapsed) => {
-    this.setState({
-      collapsed,
-    });
-  };
-
   render() {
-    const { collapsed } = this.state;
     return (
       <BrowserRouter>
         <Layout
@@ -41,25 +28,8 @@ class App extends Component {
             minHeight: '100vh',
           }}
         >
-          <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
-            <div
-              style={{
-                height: 64,
-              }}
-            />
-            <WithRouter>
-              <Menu theme="dark">
-                {routersConfig.map((item) => (
-                  <Menu.Item key={item.path}>
-                    <NavLink to={item.path}>
-                      {item.icon}
-                      {item.name}
-                    </NavLink>
-                  </Menu.Item>
-                ))}
-              </Menu>
-            </WithRouter>
-          </Sider>
+          <SiderBar />
+
           <Layout className="site-layout">
             <Header className="site-layout-background" />
             <Content

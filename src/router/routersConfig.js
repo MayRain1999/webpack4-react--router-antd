@@ -9,12 +9,36 @@ const routersConfig = [
     name: '首页',
     icon: <AndroidOutlined />,
     component: () => <Home />,
+    showSiderbar: true,
   },
   {
     path: '/pageone',
     name: 'pageone',
     icon: <SolutionOutlined />,
     component: () => <Pageone />,
+    showSiderbar: true,
+  },
+  {
+    path: '/pagetwo',
+    name: 'pagetwo',
+    icon: <SolutionOutlined />,
+    showSiderbar: true,
+    childRouters: [
+      {
+        path: '/pagetwo',
+        name: 'pagetwo',
+        icon: <SolutionOutlined />,
+        component: () => <Pageone />,
+        showSiderbar: true,
+      },
+      {
+        path: '/pagethree',
+        name: 'pagethree',
+        icon: <SolutionOutlined />,
+        component: () => <Pageone />,
+        showSiderbar: true,
+      },
+    ],
   },
 ];
 
